@@ -16,6 +16,7 @@ class EEGModel(nn.Module):
 
     def forward(self, x):
         x = self.relu(self.dense1(x))
+        x = x.unsqueeze(1)   
         x, _ = self.lstm1(x)
         x = self.dropout(x)
         x, _ = self.lstm2(x)

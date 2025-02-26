@@ -18,8 +18,8 @@ def preprocess_data(df):
 
 def create_dataloaders(x, y, batch_size=32, test_size=0.15):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=test_size)
-    x_train = torch.tensor(x_train.values, dtype=torch.float32).view(-1, 14, 1)
-    x_test = torch.tensor(x_test.values, dtype=torch.float32).view(-1, 14, 1)
+    x_train = torch.tensor(x_train.values, dtype=torch.float32)
+    x_test = torch.tensor(x_test.values, dtype=torch.float32)
     y_train = torch.tensor(y_train.values, dtype=torch.float32).view(-1, 1)
     y_test = torch.tensor(y_test.values, dtype=torch.float32).view(-1, 1)
 

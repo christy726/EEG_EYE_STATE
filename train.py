@@ -95,5 +95,4 @@ if __name__ == "__main__":
     train_loader, test_loader = create_dataloaders(x, y)
     model = EEGModel()
     trained_model = train_model(model, train_loader, test_loader)
-    torch.save(trained_model.state_dict(), "models/eeg_model.pth")  
-    
+    torch.save(trained_model.state_dict(), "models/eeg_model.pth")
