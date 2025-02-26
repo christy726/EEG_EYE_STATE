@@ -6,6 +6,7 @@ from utils.data_processing import load_data, preprocess_data, create_dataloaders
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 def train_model(model, train_loader, test_loader, epochs=25, learning_rate=0.001):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -87,6 +88,8 @@ def plot_metrics(history):
     plt.xlabel('Epoch')
     plt.legend(loc='upper left')
 
+    os.makedirs('data', exist_ok=True)
+    plt.savefig('data/training_metrics.png')
     plt.show()
 
 if __name__ == "__main__":
@@ -95,4 +98,3 @@ if __name__ == "__main__":
     train_loader, test_loader = create_dataloaders(x, y)
     model = EEGModel()
     trained_model = train_model(model, train_loader, test_loader)
-    torch.save(trained_model.state_dict(), "models/eeg_model.pth")
